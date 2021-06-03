@@ -36,6 +36,10 @@ const findByLongUrl = (longUrl, done) => {
 };
 
 const findByShortUrl = (shortUrl, done) => {
+  // case where shortUrl isn't even a mongo ObjectId
+  if (!mongoose.isValidObjectId(shortUrl)) {
+    return done(null, null);
+  }
   Shortened.findById(shortUrl, (err, data) => {
     if (err) return done(err);
     else done(null, data);
