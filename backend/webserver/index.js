@@ -21,7 +21,8 @@ app.get("/api/shorturl/:shorturl", (req, res) => {
     } else {
       if (!data) {
         res.status(404);
-        res.sendFile("err404.html", { root: staticPath });
+        res.json({ error: "No short url found for the given input" });
+        // res.sendFile("err404.html", { root: staticPath });
       } else {
         const url = data.longUrl;
         res.redirect(url);
