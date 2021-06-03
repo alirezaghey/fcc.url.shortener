@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 const staticPath = path.join(__dirname, "public/static");
 app.use(express.static(staticPath));
-app.use(express.urlencoded);
+app.use(express.urlencoded({ extended: true }));
 
 // shortened url for redirection
 app.get("/api/shorturl/:shorturl", (req, res) => {
