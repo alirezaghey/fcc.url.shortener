@@ -1,9 +1,11 @@
 const express = require("express");
 const db = require("../db");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
-app.use(express.static("public"));
+const staticPath = path.join(__dirname, "public/static");
+app.use(express.static(staticPath));
 
 // shortened url for redirection
 app.get("/api/shorturl/:shorturl", (req, res) => {
@@ -11,11 +13,11 @@ app.get("/api/shorturl/:shorturl", (req, res) => {
     if (err) {
       console.log(err);
       res.status(500);
-      res.sendFile("err500.html");
+      res.sendFile("err500.html", { root: staticPath });
     } else {
       if (!data) {
         res.status(404);
-        res.sendFile("err404.html");
+        res.sendFile("err404.html", { root: staticPath });
       } else {
         const url = data.longUrl;
         res.redirect(url);
