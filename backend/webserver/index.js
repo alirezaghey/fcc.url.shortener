@@ -1,10 +1,12 @@
 const express = require("express");
 const validUrl = require("valid-url");
+const cors = require("cors");
 const path = require("path");
 const db = require("../db");
 require("dotenv").config();
 
 const app = express();
+app.use(cors());
 const staticPath = path.join(__dirname, "public/static");
 app.use(express.static(staticPath));
 app.use(express.urlencoded);
