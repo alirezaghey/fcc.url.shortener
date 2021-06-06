@@ -57,7 +57,6 @@ app.get("/", (req, res) => {
   res.send("<h1>Frontend</h1><p>Under Construction</p>");
 });
 
-app.listen(process.env.PORT || 3000, (az) => {
-  console.log(`Listening on port: ${process.env.PORT || 3000}`);
-  console.log(az);
+app.listen(process.env.EXPRESS_PORT || 3000, () => {
+  console.log(`Listening on port: ${process.env.EXPRESS_PORT || 3000}`);
 });
