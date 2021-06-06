@@ -34,7 +34,7 @@ app.get("/api/shorturl/:shorturl", (req, res) => {
 // new url post
 // returns a json containing short and long url
 app.post("/api/shorturl", (req, res) => {
-  const longUrl = req.body["longUrl"];
+  const longUrl = req.body["url"];
   if (!validUrl.isWebUri(longUrl)) {
     return res.json({ error: "Invalid URL" });
   }
